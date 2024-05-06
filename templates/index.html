@@ -1,32 +1,31 @@
 <html>
 <head>
-    <title>Best store!</title>
+    <title>Visited cities</title>
     <script type="text/javascript" src="/static/update.js"></script>
     <link href="static/store.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Furniture store:</h1>
-    <h3>Add new product:</h3>
+    <h1>Cities list:</h1>
+    <h3>Add new town:</h3>
     <form>
         <div>
-            <input type="text" name="prod_name" id="prod_name">
-            <label for="prod_name">Product name</label>
+            <input type="text" name="town" id="town">
+            <label for="town">Название</label>
         </div>
         <div>
-            <input type="number" name="price" id="price">
-            <label for="price">Price (rub.)</label>
+            <input type="date" name="visit_date" id="visit_date">
+            <label for="visit_date">Дата</label>
         </div>
-        <button onClick="addProduct()">Add</button>
+        <button onClick="AddTown()">Add</button>
     </form>
+    <button style='color: red'  onClick="DeleteAll()">DELETE ALL BASE</button>
     <ul>
-        {% for product in products_list %}
+        {% for city in cities_list %}
         <li>
             <div>
-                <div>{{ product['prod_name'] }}</div>
-                <div>{{ product['price'] }} rub.</div>
-                <input value="{{product['id']}}" onChange="updateProd(this)" name="in_stock" type="checkbox" {% if product.in_stock %} checked {% endif %}>
-                <label for="in_stock">In stock</label>
+                <div>{{ city['town'] }}</div>
+                <div>{{ city['visit_date'] }}</div>
             </div>
         </li>
         {% endfor %}
